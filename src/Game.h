@@ -5,6 +5,7 @@
 #include <SDL_render.h>
 #include <SDL_events.h>
 #include "screen/Screen.h"
+#include "assets/AssetsManager.h"
 
 class Game {
 
@@ -17,6 +18,8 @@ protected:
     SDL_Event* event;
 
     Screen* currentScreen = nullptr;
+
+    AssetsManager * assetManager = nullptr;
 
     int window_height = 0;
     int window_width = 0;

@@ -121,10 +121,12 @@ void Game::render() {
     // Очистить экран
     SDL_RenderClear(this->renderer);
 
-    int offset = 10;
-    int size = 3;
-    int screenport_x = 7;
-    int screenport_y = 10;
+    this->currentScreen->render(0, 0, this->window_width, this->window_height, this->renderer, this->assetManager);
+
+//    int offset = 10;
+//    int size = 3;
+//    int screenport_x = 7;
+//    int screenport_y = 10;
 
 
 //    SDL_SetRenderDrawColor(this->renderer, 0x00, 0x00, 0x00, 0x00);
@@ -240,25 +242,14 @@ Game::Game() {
 }
 
 void Game::loadTextures() {
-    // Textures
-    // this->rocket = SDL_LoadBMP("rocket.bmp");
-    // this->fire = SDL_LoadBMP("fire.bmp");
+    this->assetManager = new AssetsManager(this->renderer);
 
-//    std::cout << SDL_LoadBMP("res/images/rocket.bmp");
-
-    // if(this->rocket)
-    // this->rocket_texture = SDL_CreateTextureFromSurface(this->renderer, this->rocket);
-
-    // if(this->fire)
-    // this->fire_texture = SDL_CreateTextureFromSurface(this->renderer, this->fire);
+    // Основные текстуры
+    this->assetManager->addAssetFromBMP(Asset::Textures::STARTUP, "res/images/startup.bmp");
 }
 
 void Game::unloadTextures() {
-    // if(this->rocket)
-    // SDL_FreeSurface(this->rocket);
-
-    // if(this->fire)
-    // SDL_FreeSurface(this->fire);
+    delete this->assetManager;
 }
 
 void Game::pollEvents() {
@@ -274,7 +265,7 @@ void Game::pollEvents() {
 }
 
 void Game::startup() {
-    auto welcomeScreen = new WelcomeScreen(this);
+    auto welcomeScreen = new WelcomeScreen();
     this->switchScreen((Screen *)welcomeScreen);
 }
 

@@ -30,6 +30,9 @@ protected:
 
     void pollEvents();
 
+
+    void switchWelcomeScreen();
+
 //    double step = 1.0f/64;
 //    int from = -7;
 //    int to = 0;

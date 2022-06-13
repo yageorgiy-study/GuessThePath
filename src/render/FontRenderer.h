@@ -1,0 +1,10 @@
+#ifndef GUESSTHEPATH_FONTRENDERER_H
+#define GUESSTHEPATH_FONTRENDERER_H
+
+
+class FontRenderer {
+
+};
+
+
+#endif //GUESSTHEPATH_FONTRENDERER_H

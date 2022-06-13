@@ -6,6 +6,12 @@
 
 #include "Game.h"
 #include "screen/WelcomeScreen.h"
+#include "screen/MenuScreen.h"
+
+#include <chrono>
+#include <thread>
+#include <future>
+
 
 #define PI 3.14159265
 #define SCREEN_WIDTH    800
@@ -264,12 +270,22 @@ void Game::pollEvents() {
 
 }
 
+void Game::switchWelcomeScreen() {
+    auto menuScreen = new MenuScreen();
+    this->switchScreen((Screen *)menuScreen);
+}
+
 void Game::startup() {
     auto welcomeScreen = new WelcomeScreen();
     this->switchScreen((Screen *)welcomeScreen);
+//    std::this_thread::sleep_for(std::chrono::milliseconds(3000));
+//    std::thread t(&Game::switchWelcomeScreen, this);
+//    t.join();
 }
 
 void Game::switchScreen(Screen *newScreen) {
     delete this->currentScreen;
     this->currentScreen = newScreen;
 }
+
+

@@ -13,8 +13,7 @@ public:
     MenuScreen(Game *game);
 
 public:
-    void render(int start_x, int start_y, int window_width, int window_height, SDL_Renderer *renderer,
-                AssetsManager *assetsManager) override;
+    void renderBackground(int start_x, int start_y) override;
 };
 
 

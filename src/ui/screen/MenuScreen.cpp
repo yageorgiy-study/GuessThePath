@@ -1,12 +1,15 @@
-//
-// Created by Gosha on 13.06.2022.
-//
-
 #include "MenuScreen.h"
+#include "../../Game.h"
+#include "../Text.h"
+#include "../text/TitleText.h"
 
-void MenuScreen::render(int start_x, int start_y, int window_width, int window_height, SDL_Renderer *renderer,
-                        AssetsManager *assetsManager) {
+void MenuScreen::renderBackground(int start_x, int start_y) {
+//    auto assetsManager = game->assetManager;
+    auto window_width = game->window_width;
+    auto window_height = game->window_height;
+    auto renderer = game->renderer;
 
+    /*
     int offset = 10;
     int size = 3;
     int screenport_x = 7;
@@ -30,7 +33,16 @@ void MenuScreen::render(int start_x, int start_y, int window_width, int window_h
 
     SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0x00);
     SDL_RenderFillRect(renderer, &squareRect);
+    */
+
+    // Title text
+
+    auto* titleText = this->elements[0];
+    titleText->x = game->window_width / 2 - titleText->w / 2;
+    titleText->y = 100;
 
 }
 
-MenuScreen::MenuScreen(Game *game) : Screen(game) {}
+MenuScreen::MenuScreen(Game *game) : Screen(game) {
+    this->add(new TitleText(game->renderer, "Главное меню"));
+}

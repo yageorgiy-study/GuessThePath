@@ -4,7 +4,7 @@
 #include <SDL_video.h>
 #include <SDL_render.h>
 #include <SDL_events.h>
-#include "screen/Screen.h"
+#include "ui/screen/Screen.h"
 #include "assets/AssetsManager.h"
 
 class Game {
@@ -13,25 +13,15 @@ public:
     Game();
 
 protected:
-    SDL_Window* window = nullptr;
-    SDL_Renderer* renderer = nullptr;
+    std::string title = "Guess The Path";
+
     SDL_Event* event;
-
-    Screen* currentScreen = nullptr;
-
-    AssetsManager * assetManager = nullptr;
-
-    int window_height = 0;
-    int window_width = 0;
 
     void render();
     void loadTextures();
     void unloadTextures();
 
     void pollEvents();
-
-
-    void switchWelcomeScreen();
 
 //    double step = 1.0f/64;
 //    int from = -7;
@@ -46,6 +36,15 @@ protected:
     bool forceQuit = false;
 
 public:
+    SDL_Renderer* renderer = nullptr;
+    SDL_Window* window = nullptr;
+    AssetsManager * assetManager = nullptr;
+    Screen* currentScreen = nullptr;
+
+    int window_height = 0;
+    int window_width = 0;
+
+
     void init(int argc, char* argv[]);
     void switchScreen(Screen* newScreen);
 

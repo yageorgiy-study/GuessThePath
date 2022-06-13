@@ -10,8 +10,6 @@
 #include <SDL_render.h>
 
 class Asset {
-//    static const std::string STARTUP = "startup";
-
 public:
     enum Textures {
         STARTUP

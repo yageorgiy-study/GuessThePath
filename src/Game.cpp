@@ -5,8 +5,8 @@
 #include <SDL_ttf.h>
 
 #include "Game.h"
-#include "screen/WelcomeScreen.h"
-#include "screen/MenuScreen.h"
+#include "ui/screen/WelcomeScreen.h"
+#include "ui/screen/MenuScreen.h"
 
 #include <chrono>
 #include <thread>
@@ -42,7 +42,7 @@ void Game::init(int argc, char **argv) {
 
     // Создание окна
     this->window = SDL_CreateWindow(
-            "Game application",
+            this->title.c_str(),
             SDL_WINDOWPOS_UNDEFINED,
             SDL_WINDOWPOS_UNDEFINED,
             SCREEN_WIDTH,
@@ -104,7 +104,7 @@ void Game::init(int argc, char **argv) {
 }
 
 void Game::render() {
-    int ticks = SDL_GetTicks();
+//    int ticks = SDL_GetTicks();
     // Declare rect of square
 //    SDL_Rect squareRect;
 
@@ -127,7 +127,7 @@ void Game::render() {
     // Очистить экран
     SDL_RenderClear(this->renderer);
 
-    this->currentScreen->render(0, 0, this->window_width, this->window_height, this->renderer, this->assetManager);
+    this->currentScreen->render(0, 0);
 
 //    int offset = 10;
 //    int size = 3;
@@ -268,11 +268,6 @@ void Game::pollEvents() {
         return;
     }
 
-}
-
-void Game::switchWelcomeScreen() {
-    auto menuScreen = new MenuScreen(this);
-    this->switchScreen((Screen *)menuScreen);
 }
 
 void Game::startup() {

@@ -7,7 +7,11 @@
 class Game;
 
 class Screen {
+protected:
+    Game * game;
+
 public:
+    Screen(Game *game);
     virtual void render(int start_x, int start_y, int window_width, int window_height, SDL_Renderer* renderer, AssetsManager * assetsManager) = 0;
 };
 

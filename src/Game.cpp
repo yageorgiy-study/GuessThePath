@@ -271,12 +271,12 @@ void Game::pollEvents() {
 }
 
 void Game::switchWelcomeScreen() {
-    auto menuScreen = new MenuScreen();
+    auto menuScreen = new MenuScreen(this);
     this->switchScreen((Screen *)menuScreen);
 }
 
 void Game::startup() {
-    auto welcomeScreen = new WelcomeScreen();
+    auto welcomeScreen = new WelcomeScreen(this);
     this->switchScreen((Screen *)welcomeScreen);
 //    std::this_thread::sleep_for(std::chrono::milliseconds(3000));
 //    std::thread t(&Game::switchWelcomeScreen, this);

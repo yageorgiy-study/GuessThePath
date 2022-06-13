@@ -32,3 +32,5 @@ void MenuScreen::render(int start_x, int start_y, int window_width, int window_h
     SDL_RenderFillRect(renderer, &squareRect);
 
 }
+
+MenuScreen::MenuScreen(Game *game) : Screen(game) {}

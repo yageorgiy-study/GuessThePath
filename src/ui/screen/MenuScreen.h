@@ -14,6 +14,8 @@ public:
 
 public:
     void renderBackground(int start_x, int start_y) override;
+
+    void leftMouseClicked(SDL_MouseButtonEvent &b) override;
 };
 
 

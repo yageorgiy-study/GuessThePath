@@ -3,6 +3,11 @@
 #include "../Text.h"
 #include "../text/TitleText.h"
 #include "../Button.h"
+#include "../button/PlayButton.h"
+#include "../button/SwitchPlayerButton.h"
+#include "../button/HelpButton.h"
+#include "../button/ExitButton.h"
+#include "../button/RecordsButton.h"
 
 void MenuScreen::renderBackground(int start_x, int start_y) {
 //    auto assetsManager = game->assetManager;
@@ -40,8 +45,8 @@ void MenuScreen::renderBackground(int start_x, int start_y) {
 
     auto* titleText = this->elements[0];
 
-    std::string tmp = "" + std::to_string(game->mouse_x) + " " + std::to_string(game->mouse_y);
-    ((TitleText *)titleText)->setText(tmp);
+//    std::string tmp = "" + std::to_string(game->mouse_x) + " " + std::to_string(game->mouse_y);
+//    ((TitleText *)titleText)->setText(tmp);
 
     titleText->x = game->window_width / 2 - titleText->w / 2;
     titleText->y = 100;
@@ -57,11 +62,15 @@ void MenuScreen::renderBackground(int start_x, int start_y) {
 }
 
 MenuScreen::MenuScreen(Game *game) : Screen(game) {
-    this->add(new TitleText(game->renderer, "Главное меню"));
+    this->add(new TitleText(game, "Главное меню"));
 
-    this->add(new Button(game->renderer, "Играть"));
-    this->add(new Button(game->renderer, "Смена игрока"));
-    this->add(new Button(game->renderer, "Рекорды"));
-    this->add(new Button(game->renderer, "Справка"));
-    this->add(new Button(game->renderer, "Выход"));
+    this->add(new PlayButton(game));
+    this->add(new SwitchPlayerButton(game));
+    this->add(new RecordsButton(game));
+    this->add(new HelpButton(game));
+    this->add(new ExitButton(game));
+}
+
+void MenuScreen::leftMouseClicked(SDL_MouseButtonEvent &b) {
+
 }

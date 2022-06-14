@@ -252,7 +252,8 @@ void Game::loadTextures() {
     this->assetManager = new AssetsManager(this->renderer);
 
     // Основные текстуры
-    this->assetManager->addAssetFromBMP(Asset::Textures::STARTUP, "res/images/startup.bmp");
+    this->assetManager->addAssetFromBMP(Asset::Textures::STARTUP,                   "res/images/startup.bmp");
+    this->assetManager->addAssetFromBMP(Asset::Textures::HELP_INSTRUCTIONS,         "res/images/help.bmp");
 }
 
 void Game::unloadTextures() {
@@ -275,6 +276,12 @@ void Game::pollEvents() {
         return;
     }
 
+    if(this->event->type == SDL_MOUSEBUTTONDOWN)
+    {
+        this->mouseClicked(this->event->button);
+        return;
+    }
+
 }
 
 void Game::startup() {
@@ -288,6 +295,12 @@ void Game::startup() {
 void Game::switchScreen(Screen *newScreen) {
     delete this->currentScreen;
     this->currentScreen = newScreen;
+}
+
+void Game::mouseClicked(SDL_MouseButtonEvent& b) {
+    if(b.button == SDL_BUTTON_LEFT){
+        this->currentScreen->callLeftMouseClicked(b);
+    }
 }
 
 

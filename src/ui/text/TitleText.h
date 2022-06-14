@@ -10,7 +10,7 @@
 
 class TitleText : public Text {
 public:
-    TitleText(SDL_Renderer *renderer, const std::string &text);
+    TitleText(Game *renderer, const std::string &text);
 };
 
 

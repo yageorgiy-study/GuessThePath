@@ -12,15 +12,17 @@
 class Asset {
 public:
     enum Textures {
-        STARTUP
+        STARTUP,
+        HELP_INSTRUCTIONS
     };
 
     Asset(SDL_Surface *surface, SDL_Renderer* renderer);
-    void render(SDL_Rect *Message_rect);
+    void render();
     virtual ~Asset();
 
-    SDL_Rect *getRect() const;
+    const SDL_Rect &getRect() const;
 
+    SDL_Rect* renderRect;
 private:
     SDL_Rect* rect;
     SDL_Renderer* renderer = nullptr;

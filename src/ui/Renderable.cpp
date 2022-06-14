@@ -1,10 +1,10 @@
 #include <iostream>
 #include "Renderable.h"
 
-Renderable::Renderable(SDL_Renderer *renderer) : renderer(renderer) {}
+Renderable::Renderable(Game *game) : game(game) {}
 
-void Renderable::callMousePress(SDL_MouseButtonEvent &b) {
-    mousePress(b);
+void Renderable::callLeftMouseClicked(SDL_MouseButtonEvent &b) {
+    leftMouseClicked(b);
 }
 
 void Renderable::callRender(int start_x, int start_y) {

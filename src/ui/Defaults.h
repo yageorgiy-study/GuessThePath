@@ -23,6 +23,10 @@ public:
         return {0,96,255};
     }
 
+    static SDL_Color ACTIVE_BUTTON_COLOR(){
+        return {78,145,255};
+    }
+
     static SDL_Color BUTTON_TEXT_COLOR(){
         return {255,255,255};
     }

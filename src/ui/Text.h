@@ -17,7 +17,7 @@ private:
     void updateSurface();
 
 public:
-    Text(SDL_Renderer *renderer, std::string Text, TTF_Font *font, SDL_Color text_color);
+    Text(Game *renderer, std::string Text, TTF_Font *font, SDL_Color text_color);
 
     virtual ~Text();
 
@@ -28,7 +28,7 @@ public:
     TTF_Font *getFont() const;
 
     void render(int start_x, int start_y) override;
-    void mousePress(SDL_MouseButtonEvent &b) override;
+    void leftMouseClicked(SDL_MouseButtonEvent &b) override;
 };
 
 

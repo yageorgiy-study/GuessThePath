@@ -11,13 +11,15 @@ void WelcomeScreen::renderBackground(int start_x, int start_y) {
     auto window_width = game->window_width;
     auto window_height = game->window_height;
 
-    auto startupTexture = assetsManager->assets[Asset::Textures::STARTUP];
+    auto texture = assetsManager->assets[Asset::Textures::STARTUP];
 
-    auto pos = startupTexture->getRect();
-    pos->x = window_width / 2 - pos->w / 2;
-    pos->y = window_height / 2 - pos->h / 2;
+    auto pos = texture->getRect();
+    texture->renderRect->w = std::min(pos.w, window_width);
+    texture->renderRect->h = std::min(pos.h, window_height);
+    texture->renderRect->x = window_width / 2 - texture->renderRect->w / 2;
+    texture->renderRect->y = window_height / 2 - texture->renderRect->h / 2;
 
-    startupTexture->render(pos);
+    texture->render();
 
     if(SDL_GetTicks() > this->waitMs){
         this->game->switchScreen(new MenuScreen(this->game));
@@ -25,3 +27,7 @@ void WelcomeScreen::renderBackground(int start_x, int start_y) {
 }
 
 WelcomeScreen::WelcomeScreen(Game *game) : Screen(game) {}
+
+void WelcomeScreen::leftMouseClicked(SDL_MouseButtonEvent &b) {
+    this->game->switchScreen(new MenuScreen(this->game));
+}

@@ -22,6 +22,7 @@ protected:
     void unloadTextures();
 
     void pollEvents();
+    void mouseClicked(SDL_MouseButtonEvent& b);
 
 //    double step = 1.0f/64;
 //    int from = -7;
@@ -33,17 +34,17 @@ protected:
 //    SDL_Texture * fire_texture;
 //    SDL_Texture * rocket_texture;
 
-    bool forceQuit = false;
-
 public:
+
     SDL_Renderer* renderer = nullptr;
     SDL_Window* window = nullptr;
     AssetsManager * assetManager = nullptr;
     Screen* currentScreen = nullptr;
-
     int window_width, window_height, window_x, window_y = 0;
 
     int mouse_x, mouse_y = 0;
+
+    bool forceQuit = false;
 
     void init(int argc, char* argv[]);
     void switchScreen(Screen* newScreen);

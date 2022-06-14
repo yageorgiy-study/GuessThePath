@@ -5,7 +5,7 @@
 
 class InfoText : public Text {
 public:
-    InfoText(SDL_Renderer *renderer, const std::string &text);
+    InfoText(Game *renderer, const std::string &text);
 };
 
 

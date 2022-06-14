@@ -8,10 +8,18 @@ Asset::Asset(SDL_Surface *surface, SDL_Renderer *renderer) : surface(surface), r
     this->rect->x = 0;
     this->rect->y = 0;
 
+    this->renderRect = new SDL_Rect;
+    this->renderRect->w = 0;
+    this->renderRect->h = 0;
+    this->renderRect->x = 0;
+    this->renderRect->y = 0;
+
     if(this->surface && this->renderer){
         this->texture = SDL_CreateTextureFromSurface(this->renderer, this->surface);
 
         SDL_QueryTexture(this->texture, NULL, NULL, &this->rect->w, &this->rect->h);
+        this->renderRect->w = this->rect->w;
+        this->renderRect->h = this->rect->h;
     }
 }
 
@@ -29,12 +37,12 @@ Asset::~Asset() {
     delete this->rect;
 }
 
-void Asset::render(SDL_Rect *Message_rect) {
+void Asset::render() {
     if(this->renderer && this->texture)
-        SDL_RenderCopy(this->renderer, this->texture, nullptr, Message_rect);
+        SDL_RenderCopy(this->renderer, this->texture, nullptr, this->renderRect);
 }
 
-SDL_Rect *Asset::getRect() const {
-    return rect;
+const SDL_Rect &Asset::getRect() const {
+    return *rect;
 }
 

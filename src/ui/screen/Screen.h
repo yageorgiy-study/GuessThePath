@@ -22,6 +22,14 @@ public:
     virtual void renderBackground(int start_x, int start_y) = 0;
     void render(int start_x, int start_y);
     void add(Renderable* r);
+
+    void callLeftMouseClicked(SDL_MouseButtonEvent& b);
+    virtual void leftMouseClicked(SDL_MouseButtonEvent& b) = 0;
+
+//    void callLeftMouseClicked(SDL_MouseButtonEvent& b);
+//    virtual void leftMouseClicked(SDL_MouseButtonEvent& b) = 0;
+
+//    void buttonPressed(SDL_MouseButtonEvent& b);
 };
 
 

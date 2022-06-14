@@ -24,6 +24,12 @@ protected:
     void pollEvents();
     void mouseClicked(SDL_MouseButtonEvent& b);
 
+    //keys
+//    bool keys[322];  // 322 is the number of SDLK_DOWN events
+
+    void keyUp(SDL_KeyboardEvent& e);
+    void keyDown(SDL_KeyboardEvent& e);
+
 //    double step = 1.0f/64;
 //    int from = -7;
 //    int to = 0;

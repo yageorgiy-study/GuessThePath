@@ -1,7 +1,3 @@
-//
-// Created by Gosha on 14.06.2022.
-//
-
 #ifndef GUESSTHEPATH_EXITBUTTON_H
 #define GUESSTHEPATH_EXITBUTTON_H
 

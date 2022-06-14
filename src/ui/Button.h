@@ -29,7 +29,9 @@ public:
 
     bool isHovered();
 
+    void keyUp(SDL_KeyboardEvent &e) override;
 
+    void keyDown(SDL_KeyboardEvent &e) override;
 };
 
 

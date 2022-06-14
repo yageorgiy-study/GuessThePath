@@ -26,6 +26,12 @@ public:
     void callLeftMouseClicked(SDL_MouseButtonEvent& b);
     virtual void leftMouseClicked(SDL_MouseButtonEvent& b) = 0;
 
+    virtual void keyUp(SDL_KeyboardEvent& e) = 0;
+    virtual void keyDown(SDL_KeyboardEvent& e) = 0;
+
+    void callKeyUp(SDL_KeyboardEvent& e);
+    void callKeyDown(SDL_KeyboardEvent& e);
+
 //    void callLeftMouseClicked(SDL_MouseButtonEvent& b);
 //    virtual void leftMouseClicked(SDL_MouseButtonEvent& b) = 0;
 

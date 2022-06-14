@@ -31,3 +31,19 @@ void Screen::callLeftMouseClicked(SDL_MouseButtonEvent &b) {
         element->callLeftMouseClicked(b);
     }
 }
+
+void Screen::callKeyDown(SDL_KeyboardEvent &e) {
+    this->keyDown(e);
+
+    for(auto element : this->elements){
+        element->keyDown(e);
+    }
+}
+
+void Screen::callKeyUp(SDL_KeyboardEvent &e) {
+    this->keyUp(e);
+
+    for(auto element : this->elements){
+        element->keyUp(e);
+    }
+}

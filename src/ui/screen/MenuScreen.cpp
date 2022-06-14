@@ -1,3 +1,4 @@
+#include <iostream>
 #include "MenuScreen.h"
 #include "../../Game.h"
 #include "../Text.h"
@@ -81,5 +82,13 @@ MenuScreen::MenuScreen(Game *game) : Screen(game) {
 }
 
 void MenuScreen::leftMouseClicked(SDL_MouseButtonEvent &b) {
+
+}
+
+void MenuScreen::keyUp(SDL_KeyboardEvent &e) {
+
+}
+
+void MenuScreen::keyDown(SDL_KeyboardEvent &e) {
 
 }

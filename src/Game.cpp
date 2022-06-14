@@ -246,6 +246,11 @@ void Game::render() {
 
 Game::Game() {
     this->event = new SDL_Event;
+
+    // keys init
+//    for(int i = 0; i < 322; i++) { // init them all to false
+//        this->keys[i] = false;
+//    }
 }
 
 void Game::loadTextures() {
@@ -282,6 +287,21 @@ void Game::pollEvents() {
         return;
     }
 
+    if(this->event->type == SDL_KEYDOWN)
+    {
+//        std::cout << this->event->key.keysym.sym;
+//        this->keys[this->event->key.keysym.sym] = true; // при ctrl = out of range -1073740940 (0xC0000374)
+        this->keyDown(this->event->key);
+        return;
+    }
+
+    if(this->event->type == SDL_KEYUP)
+    {
+//        this->keys[this->event->key.keysym.sym] = false;
+        this->keyUp(this->event->key);
+        return;
+    }
+
 }
 
 void Game::startup() {
@@ -302,5 +322,15 @@ void Game::mouseClicked(SDL_MouseButtonEvent& b) {
         this->currentScreen->callLeftMouseClicked(b);
     }
 }
+
+void Game::keyDown(SDL_KeyboardEvent &e) {
+    this->currentScreen->callKeyDown(e);
+}
+
+void Game::keyUp(SDL_KeyboardEvent &e) {
+    this->currentScreen->callKeyUp(e);
+}
+
+
 
 

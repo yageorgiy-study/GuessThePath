@@ -66,3 +66,11 @@ void Text::setText(const std::string &text) {
     Text::text = text;
     this->updateSurface();
 }
+
+void Text::keyUp(SDL_KeyboardEvent &e) {
+
+}
+
+void Text::keyDown(SDL_KeyboardEvent &e) {
+
+}

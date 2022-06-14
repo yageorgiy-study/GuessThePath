@@ -61,3 +61,11 @@ bool Button::isHovered() {
     return (actual_x >= this->x && actual_x <= this->x + this->w &&
        actual_y >= this->y && actual_y <= this->y + this->h);
 }
+
+void Button::keyUp(SDL_KeyboardEvent &e) {
+
+}
+
+void Button::keyDown(SDL_KeyboardEvent &e) {
+
+}

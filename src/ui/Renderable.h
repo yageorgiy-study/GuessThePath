@@ -18,6 +18,9 @@ public:
     virtual void render(int start_x, int start_y) = 0;
     virtual void leftMouseClicked(SDL_MouseButtonEvent& b) = 0;
 
+    virtual void keyUp(SDL_KeyboardEvent &e) = 0;
+    virtual void keyDown(SDL_KeyboardEvent &e) = 0;
+
 protected:
     Game * game = nullptr;
 };

@@ -31,3 +31,11 @@ WelcomeScreen::WelcomeScreen(Game *game) : Screen(game) {}
 void WelcomeScreen::leftMouseClicked(SDL_MouseButtonEvent &b) {
     this->game->switchScreen(new MenuScreen(this->game));
 }
+
+void WelcomeScreen::keyUp(SDL_KeyboardEvent &e) {
+
+}
+
+void WelcomeScreen::keyDown(SDL_KeyboardEvent &e) {
+
+}

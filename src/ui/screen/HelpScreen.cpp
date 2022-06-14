@@ -37,3 +37,11 @@ void HelpScreen::renderBackground(int start_x, int start_y) {
 void HelpScreen::leftMouseClicked(SDL_MouseButtonEvent &b) {
 
 }
+
+void HelpScreen::keyUp(SDL_KeyboardEvent &e) {
+
+}
+
+void HelpScreen::keyDown(SDL_KeyboardEvent &e) {
+
+}

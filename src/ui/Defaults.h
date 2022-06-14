@@ -46,7 +46,7 @@ public:
 
     static const int TITLE_FONT_SIZE = 72;
     static const int BUTTON_FONT_SIZE = 18;
-    static const int TEXT_FIELD_FONT_SIZE = 14;
+    static const int TEXT_FIELD_FONT_SIZE = 18;
 };
 
 

@@ -8,6 +8,7 @@
 #include "../button/HelpButton.h"
 #include "../button/ExitButton.h"
 #include "../button/RecordsButton.h"
+#include "../text/InfoText.h"
 
 void MenuScreen::renderBackground(int start_x, int start_y) {
 //    auto assetsManager = game->assetManager;
@@ -51,7 +52,14 @@ void MenuScreen::renderBackground(int start_x, int start_y) {
     titleText->x = game->window_width / 2 - titleText->w / 2;
     titleText->y = 100;
 
-    for(int i = 1; i < this->elements.size(); i++){
+    auto* usernameText = this->elements[1];
+    usernameText->x = 10;
+    usernameText->y = game->window_height - 10 - usernameText->h;
+
+    std::string username = "Имя игрока: " + game->username;
+    ((TitleText *)usernameText)->setText(username);
+
+    for(int i = 2; i < this->elements.size(); i++){
         auto* btn = this->elements[i];
         btn->w = 300;
         btn->h = game->window_height / 12;
@@ -63,6 +71,7 @@ void MenuScreen::renderBackground(int start_x, int start_y) {
 
 MenuScreen::MenuScreen(Game *game) : Screen(game) {
     this->add(new TitleText(game, "Главное меню"));
+    this->add(new InfoText(game, ""));
 
     this->add(new PlayButton(game));
     this->add(new SwitchPlayerButton(game));

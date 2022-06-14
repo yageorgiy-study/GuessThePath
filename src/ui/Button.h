@@ -11,6 +11,7 @@
 #include "Text.h"
 
 class Button : public Renderable {
+protected:
     Text * text = nullptr;
 public:
 
@@ -27,6 +28,8 @@ public:
     virtual void pressed() = 0;
 
     bool isHovered();
+
+
 };
 
 

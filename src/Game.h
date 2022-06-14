@@ -35,6 +35,7 @@ protected:
 //    SDL_Texture * rocket_texture;
 
 public:
+    std::string username = "Player";
 
     SDL_Renderer* renderer = nullptr;
     SDL_Window* window = nullptr;

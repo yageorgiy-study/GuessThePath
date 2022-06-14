@@ -62,6 +62,7 @@ Text::~Text() {
 }
 
 void Text::setText(const std::string &text) {
+    if(this->text == text) return; // optimization
     Text::text = text;
     this->updateSurface();
 }

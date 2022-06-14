@@ -23,6 +23,14 @@ public:
         return {0,96,255};
     }
 
+    static SDL_Color TEXTFIELD_COLOR(){
+        return {110,110,110};
+    }
+
+    static SDL_Color TEXTFIELD_FONT_COLOR(){
+        return {255,255,255};
+    }
+
     static SDL_Color ACTIVE_BUTTON_COLOR(){
         return {78,145,255};
     }

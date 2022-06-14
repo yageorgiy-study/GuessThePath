@@ -41,9 +41,9 @@ public:
     AssetsManager * assetManager = nullptr;
     Screen* currentScreen = nullptr;
 
-    int window_height = 0;
-    int window_width = 0;
+    int window_width, window_height, window_x, window_y = 0;
 
+    int mouse_x, mouse_y = 0;
 
     void init(int argc, char* argv[]);
     void switchScreen(Screen* newScreen);

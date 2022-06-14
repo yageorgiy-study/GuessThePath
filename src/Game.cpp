@@ -78,8 +78,9 @@ void Game::init(int argc, char **argv) {
                 if (delta <= 1000 / 60.0) continue;
                 b = a;
 
-                // Размер окна
+                // Размер и позиция окна
                 SDL_GetWindowSize(this->window, &this->window_width, &this->window_height);
+                SDL_GetWindowPosition(this->window, &this->window_x, &this->window_y);
 
                 this->render();
 
@@ -265,6 +266,12 @@ void Game::pollEvents() {
     if(this->event->type == SDL_QUIT)
     {
         this->forceQuit = true;
+        return;
+    }
+
+    if(this->event->type == SDL_MOUSEMOTION)
+    {
+        SDL_GetGlobalMouseState(&mouse_x, &mouse_y);
         return;
     }
 

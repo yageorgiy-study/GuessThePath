@@ -6,7 +6,23 @@
 #define GUESSTHEPATH_BUTTON_H
 
 
-class Button {
+#include <string>
+#include "Renderable.h"
+#include "Text.h"
+
+class Button : public Renderable {
+    Text * text = nullptr;
+public:
+
+    Button(SDL_Renderer *renderer, std::string textString);
+    virtual ~Button();
+
+    void updateText(std::string textString);
+
+    Text *getText() const;
+    void setText(std::string text);
+    void render(int start_x, int start_y) override;
+    void mousePress(SDL_MouseButtonEvent& b) override;
 
 };
 

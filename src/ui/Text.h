@@ -21,6 +21,8 @@ public:
 
     virtual ~Text();
 
+    void setText(const std::string &text);
+
     const std::string &getText() const;
     const SDL_Color &getTextColor() const;
     TTF_Font *getFont() const;

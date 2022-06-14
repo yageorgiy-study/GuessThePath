@@ -59,3 +59,8 @@ Text::~Text() {
     if(this->font != nullptr)
         TTF_CloseFont(this->font);
 }
+
+void Text::setText(const std::string &text) {
+    Text::text = text;
+    this->updateSurface();
+}

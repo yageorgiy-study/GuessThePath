@@ -18,6 +18,9 @@ public:
 
     int msForRemember = 5000;
     bool dead = false;
+    bool paused = false;
+
+    int pauseStarted = -1;
 
     void renderBackground(int start_x, int start_y) override;
     void leftMouseClicked(SDL_MouseButtonEvent &b) override;

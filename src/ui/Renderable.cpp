@@ -8,5 +8,6 @@ void Renderable::callLeftMouseClicked(SDL_MouseButtonEvent &b) {
 }
 
 void Renderable::callRender(int start_x, int start_y) {
-    render(start_x, start_y);
+    if(visible)
+        render(start_x, start_y);
 }

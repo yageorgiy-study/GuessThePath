@@ -11,6 +11,7 @@ class Renderable {
 public:
     Renderable(Game *game);
     int x = 0,y = 0,w = 0,h = 0;
+    bool visible = true;
 
     void callRender(int start_x, int start_y);
     void callLeftMouseClicked(SDL_MouseButtonEvent& b);

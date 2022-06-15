@@ -7,7 +7,7 @@
 #include "../../Game.h"
 #include "../screen/MenuScreen.h"
 
-ApplyUsernameButton::ApplyUsernameButton(Game *game, TextField * field) : Button(game, "Изменить имя пользователя") {
+ApplyUsernameButton::ApplyUsernameButton(Game *game, TextField * field) : Button(game, "Применить") {
     this->textField = field;
 }
 

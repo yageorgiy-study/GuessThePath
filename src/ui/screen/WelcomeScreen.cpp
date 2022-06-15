@@ -5,6 +5,7 @@
 
 #include "../../Game.h"
 #include "MenuScreen.h"
+#include "SwitchPlayerScreen.h"
 
 void WelcomeScreen::renderBackground(int start_x, int start_y) {
     auto assetsManager = game->assetManager;
@@ -22,14 +23,14 @@ void WelcomeScreen::renderBackground(int start_x, int start_y) {
     texture->render();
 
     if(SDL_GetTicks() > this->waitMs){
-        this->game->switchScreen(new MenuScreen(this->game));
+        this->game->switchScreen(new SwitchPlayerScreen(this->game));
     }
 }
 
 WelcomeScreen::WelcomeScreen(Game *game) : Screen(game) {}
 
 void WelcomeScreen::leftMouseClicked(SDL_MouseButtonEvent &b) {
-    this->game->switchScreen(new MenuScreen(this->game));
+    this->game->switchScreen(new SwitchPlayerScreen(this->game));
 }
 
 void WelcomeScreen::keyUp(SDL_KeyboardEvent &e) {

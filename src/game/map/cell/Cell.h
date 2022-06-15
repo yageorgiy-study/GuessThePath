@@ -1,0 +1,31 @@
+//
+// Created by Gosha on 15.06.2022.
+//
+
+#ifndef GUESSTHEPATH_CELL_H
+#define GUESSTHEPATH_CELL_H
+
+
+#include "../../../Game.h"
+
+class Cell {
+protected:
+    Game * game = nullptr;
+    short type = -1;
+    bool visited = false;
+
+public:
+    static const short UNDEFINED = -1;
+    int w, h = 16;
+
+    bool isVisited() const;
+
+    void setVisited(bool visited);
+
+    Cell(Game * game);
+    virtual void render(int x, int y) = 0;
+    void callRender(int x, int y);
+};
+
+
+#endif //GUESSTHEPATH_CELL_H

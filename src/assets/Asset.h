@@ -13,7 +13,13 @@ class Asset {
 public:
     enum Textures {
         STARTUP,
-        HELP_INSTRUCTIONS
+        HELP_INSTRUCTIONS,
+
+        BOMB,
+        EMPTY_PATH,
+        FINISH,
+        UNKNOWN_PATH,
+        PLAYER
     };
 
     Asset(SDL_Surface *surface, SDL_Renderer* renderer);

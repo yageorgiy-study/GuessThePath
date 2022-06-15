@@ -259,6 +259,13 @@ void Game::loadTextures() {
     // Основные текстуры
     this->assetManager->addAssetFromBMP(Asset::Textures::STARTUP,                   "res/images/startup.bmp");
     this->assetManager->addAssetFromBMP(Asset::Textures::HELP_INSTRUCTIONS,         "res/images/help.bmp");
+
+    // Игровая карта
+    this->assetManager->addAssetFromBMP(Asset::Textures::BOMB,                      "res/images/bomb.bmp");
+    this->assetManager->addAssetFromBMP(Asset::Textures::EMPTY_PATH,                "res/images/empty_path.bmp");
+    this->assetManager->addAssetFromBMP(Asset::Textures::FINISH,                    "res/images/finish.bmp");
+    this->assetManager->addAssetFromBMP(Asset::Textures::PLAYER,                    "res/images/player.bmp");
+    this->assetManager->addAssetFromBMP(Asset::Textures::UNKNOWN_PATH,              "res/images/unknown_path.bmp");
 }
 
 void Game::unloadTextures() {

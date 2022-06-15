@@ -10,7 +10,7 @@ class Game;
 class Renderable {
 public:
     Renderable(Game *game);
-    int x,y,w,h = 0;
+    int x = 0,y = 0,w = 0,h = 0;
 
     void callRender(int start_x, int start_y);
     void callLeftMouseClicked(SDL_MouseButtonEvent& b);

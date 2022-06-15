@@ -1,7 +1,3 @@
-//
-// Created by Gosha on 14.06.2022.
-//
-
 #ifndef GUESSTHEPATH_GAMESCREEN_H
 #define GUESSTHEPATH_GAMESCREEN_H
 

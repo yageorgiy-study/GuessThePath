@@ -16,7 +16,7 @@ public:
     static const short VALUE = 0;
 
     EmptyPath(Game *game);
-    void render(int x, int y) override;
+    void render(int x, int y, bool forceShown) override;
 };
 
 

@@ -15,7 +15,7 @@ public:
     static const short VALUE = 1;
 
     Bomb(Game *game);
-    void render(int x, int y) override;
+    void render(int x, int y, bool forceShown) override;
 };
 
 

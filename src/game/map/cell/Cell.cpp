@@ -1,7 +1,7 @@
 #include "Cell.h"
 
-void Cell::callRender(int x, int y) {
-    this->render(x, y);
+void Cell::callRender(int x, int y, bool forceShown) {
+    this->render(x, y, forceShown);
 }
 
 Cell::Cell(Game *game) {

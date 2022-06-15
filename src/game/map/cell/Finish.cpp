@@ -6,10 +6,10 @@
 
 Finish::Finish(Game *game) : Cell(game) {}
 
-void Finish::render(int x, int y) {
+void Finish::render(int x, int y, bool forceShown) {
     Asset * asset = nullptr;
 
-    if(this->visited){
+    if(this->visited || forceShown){
         asset = this->game->assetManager->assets[Asset::FINISH];
     } else {
         asset = this->game->assetManager->assets[Asset::UNKNOWN_PATH];

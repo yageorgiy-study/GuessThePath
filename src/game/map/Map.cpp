@@ -44,7 +44,6 @@ void Map::generateMap() {
     {
         auto h = generateRandomInt(0, this->height - 1);
         auto w = generateRandomInt(0, this->width - 1);
-        std::cout << "asddas: " << w << " " << h << std::endl;
 
         this->cells[h][w] = new Bomb(this->game);
 //        this->cells[h][w]->setVisited(true);
@@ -83,9 +82,21 @@ void Map::render(int start_x, int start_y) {
             auto cell = this->cells[i][j];
             if(cell == nullptr) continue;
 
-            cell->w = (int)round((double)this->w / this->width);
-            cell->h = (int)round((double)this->h / this->height);
-            cell->render(start_x + this->x + cell->w * (i), start_y + this->y + cell->h * (j));
+            cell->w = (int)round((double)this->w / this->height);
+            cell->h = (int)round((double)this->h / this->width);
+            cell->render(start_x + this->x + cell->w * (i), start_y + this->y + cell->h * (j), false);
+
+            if(i == player_y && j == player_x)
+            {
+                auto texture = game->assetManager->assets[Asset::Textures::PLAYER];
+
+                texture->renderRect->w = cell->w;
+                texture->renderRect->h = cell->h;
+                texture->renderRect->x = start_x + this->x + cell->w * (i);
+                texture->renderRect->y = start_y + this->y + cell->h * (j);
+
+                texture->render();
+            }
         }
 }
 
@@ -94,9 +105,38 @@ void Map::leftMouseClicked(SDL_MouseButtonEvent &b) {
 }
 
 void Map::keyUp(SDL_KeyboardEvent &e) {
-
+//    this->tapped = false;
 }
 
 void Map::keyDown(SDL_KeyboardEvent &e) {
+//    if(this->tapped) return;
+//    this->tapped = true;
+
+    switch(e.keysym.scancode)
+    {
+        case SDL_SCANCODE_W:
+            if(this->player_x - 1 >= 0)
+                this->player_x--;
+            break;
+
+        case SDL_SCANCODE_A:
+            if(this->player_y - 1 >= 0)
+                this->player_y--;
+            break;
+
+        case SDL_SCANCODE_S:
+            if(this->player_x + 1 < this->width)
+                this->player_x++;
+            break;
+
+        case SDL_SCANCODE_D:
+            if(this->player_y + 1 < this->height)
+                this->player_y++;
+            break;
+    }
+
+    // Game logic
+    this->cells[this->player_y][this->player_x]->setVisited(true);
+
 
 }

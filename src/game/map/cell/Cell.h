@@ -16,15 +16,15 @@ protected:
 
 public:
     static const short UNDEFINED = -1;
-    int w, h = 16;
+    int w = 16, h = 16;
 
     bool isVisited() const;
 
     void setVisited(bool visited);
 
     Cell(Game * game);
-    virtual void render(int x, int y) = 0;
-    void callRender(int x, int y);
+    virtual void render(int x, int y, bool forceShown) = 0;
+    void callRender(int x, int y, bool forceShown);
 };
 
 

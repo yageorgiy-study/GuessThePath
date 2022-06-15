@@ -2,10 +2,10 @@
 
 Bomb::Bomb(Game *game) : Cell(game) {}
 
-void Bomb::render(int x, int y) {
+void Bomb::render(int x, int y, bool forceShown) {
     Asset * asset = nullptr;
 
-    if(this->visited){
+    if(this->visited || forceShown){
         asset = this->game->assetManager->assets[Asset::BOMB];
     } else {
         asset = this->game->assetManager->assets[Asset::UNKNOWN_PATH];

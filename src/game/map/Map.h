@@ -10,10 +10,12 @@ class Map : public Renderable {
     int width = 16;
     int height = 16;
 
-    int player_x, player_y = 0;
+    int player_x = 0, player_y = 0;
+
+    bool tapped = false;
 
     Cell* ** cells = nullptr;
-    int generateRandomInt(const int min, const int max);
+    static int generateRandomInt(const int min, const int max);
     Game * game;
 public:
     Map(Game * game, int player_x, int player_y);

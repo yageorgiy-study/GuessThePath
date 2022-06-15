@@ -13,7 +13,14 @@ ApplyUsernameButton::ApplyUsernameButton(Game *game, TextField * field) : Button
 
 void ApplyUsernameButton::pressed() {
     if(this->textField->getValue().compare(""))
+    {
         this->game->records->username = this->textField->getValue();
+    } else {
+        if(this->game->records->username.empty())
+            this->game->records->username = "Player";
+    }
+
+
 
     this->game->switchScreen(new MenuScreen(game));
 }

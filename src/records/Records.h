@@ -18,7 +18,7 @@ public:
 
     bool addValue(Record *rec);
 
-    std::string username = "Player";
+    std::string username = "";
 protected:
     int maxValues = 10;
     std::string filename = "";

@@ -11,11 +11,12 @@
 class Cell {
 protected:
     Game * game = nullptr;
-    short type = -1;
+
     bool visited = false;
 
 public:
-    static const short UNDEFINED = -1;
+//    short type = -1;
+//    static const short UNDEFINED = -1;
     int w = 16, h = 16;
 
     bool isVisited() const;

@@ -9,10 +9,9 @@
 #include "Cell.h"
 
 class Bomb : public Cell {
-protected:
-    short type = 1;
 public:
-    static const short VALUE = 1;
+//    short type = 1;
+//    static const short VALUE = 1;
 
     Bomb(Game *game);
     void render(int x, int y, bool forceShown) override;

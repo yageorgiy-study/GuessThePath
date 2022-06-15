@@ -19,7 +19,8 @@ public:
         EMPTY_PATH,
         FINISH,
         UNKNOWN_PATH,
-        PLAYER
+        PLAYER,
+        SKULL
     };
 
     Asset(SDL_Surface *surface, SDL_Renderer* renderer);

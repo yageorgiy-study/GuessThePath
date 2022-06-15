@@ -13,11 +13,13 @@ class Map : public Renderable {
     int player_x = 0, player_y = 0;
 
     bool tapped = false;
+    bool dead = false;
 
     Cell* ** cells = nullptr;
-    static int generateRandomInt(const int min, const int max);
+
     Game * game;
 public:
+    bool showAll = false;
     Map(Game * game, int player_x, int player_y);
     virtual ~Map();
     void generateMap();

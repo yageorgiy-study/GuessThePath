@@ -5,6 +5,7 @@
 #include "cell/Bomb.h"
 #include "cell/EmptyPath.h"
 #include "cell/Finish.h"
+#include "../../Utils.h"
 
 Map::Map(Game * game, int player_x, int player_y) : Renderable(game) {
     this->player_x = player_x;
@@ -42,8 +43,8 @@ void Map::generateMap() {
     // generate bombs
     for(int i = 0; i < 10; i++)
     {
-        auto h = generateRandomInt(0, this->height - 1);
-        auto w = generateRandomInt(0, this->width - 1);
+        auto h = Utils::generateRandomInt(0, this->height - 1);
+        auto w = Utils::generateRandomInt(0, this->width - 1);
 
         this->cells[h][w] = new Bomb(this->game);
 //        this->cells[h][w]->setVisited(true);
@@ -57,23 +58,7 @@ void Map::generateMap() {
     this->cells[this->height - 1][this->width - 1]->setVisited(true);
 }
 
-// Returns a random integer within the range [min, max]
-int Map::generateRandomInt(const int min, const int max) {
-    static bool is_seeded = false;
-    static std::mt19937 generator;
 
-    // Seed once
-    if (!is_seeded) {
-        std::random_device rd;
-        generator.seed(rd());
-        is_seeded = true;
-    }
-
-    // Use mersenne twister engine to pick a random number
-    // within the given range
-    std::uniform_int_distribution<int> distribution(min, max);
-    return distribution(generator);
-}
 
 void Map::render(int start_x, int start_y) {
     for(int i = 0; i < this->height; i++)
@@ -84,11 +69,16 @@ void Map::render(int start_x, int start_y) {
 
             cell->w = (int)round((double)this->w / this->height);
             cell->h = (int)round((double)this->h / this->width);
-            cell->render(start_x + this->x + cell->w * (i), start_y + this->y + cell->h * (j), false);
+            cell->render(start_x + this->x + cell->w * (i), start_y + this->y + cell->h * (j), this->showAll);
 
             if(i == player_y && j == player_x)
             {
-                auto texture = game->assetManager->assets[Asset::Textures::PLAYER];
+                Asset* texture;
+
+                if(!dead)
+                    texture = game->assetManager->assets[Asset::Textures::PLAYER];
+                else
+                    texture = game->assetManager->assets[Asset::Textures::SKULL];
 
                 texture->renderRect->w = cell->w;
                 texture->renderRect->h = cell->h;
@@ -111,6 +101,8 @@ void Map::keyUp(SDL_KeyboardEvent &e) {
 void Map::keyDown(SDL_KeyboardEvent &e) {
 //    if(this->tapped) return;
 //    this->tapped = true;
+
+    if(dead) return;
 
     switch(e.keysym.scancode)
     {
@@ -136,7 +128,13 @@ void Map::keyDown(SDL_KeyboardEvent &e) {
     }
 
     // Game logic
-    this->cells[this->player_y][this->player_x]->setVisited(true);
+    auto cur = this->cells[this->player_y][this->player_x];
+    cur->setVisited(true);
 
-
+    // Is Bomb class
+    if(dynamic_cast<Bomb*>(cur) != nullptr)
+    {
+        dead = true;
+        return;
+    }
 }

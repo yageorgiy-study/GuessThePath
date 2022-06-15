@@ -9,11 +9,10 @@
 #include "Cell.h"
 
 class EmptyPath : public Cell {
-protected:
-    short type = 0;
-
 public:
-    static const short VALUE = 0;
+
+//    static const short VALUE = 0;
+//    short type = 0;
 
     EmptyPath(Game *game);
     void render(int x, int y, bool forceShown) override;

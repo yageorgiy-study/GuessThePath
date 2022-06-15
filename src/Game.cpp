@@ -266,6 +266,7 @@ void Game::loadTextures() {
     this->assetManager->addAssetFromBMP(Asset::Textures::FINISH,                    "res/images/finish.bmp");
     this->assetManager->addAssetFromBMP(Asset::Textures::PLAYER,                    "res/images/player.bmp");
     this->assetManager->addAssetFromBMP(Asset::Textures::UNKNOWN_PATH,              "res/images/unknown_path.bmp");
+    this->assetManager->addAssetFromBMP(Asset::Textures::SKULL,                     "res/images/skull.bmp");
 }
 
 void Game::unloadTextures() {

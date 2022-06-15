@@ -9,13 +9,22 @@ class GameScreen : public Screen {
 public:
     GameScreen(Game *game);
 
+    virtual ~GameScreen();
+
     Map * map;
     int timeStarted = -1;
+
+    int beReadyShakeRadius = 2;
+
+    int msForRemember = 5000;
+    bool dead = false;
 
     void renderBackground(int start_x, int start_y) override;
     void leftMouseClicked(SDL_MouseButtonEvent &b) override;
     void keyUp(SDL_KeyboardEvent &e) override;
     void keyDown(SDL_KeyboardEvent &e) override;
+
+    int getTimeElapsed();
 };
 
 

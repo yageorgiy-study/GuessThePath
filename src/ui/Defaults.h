@@ -23,6 +23,10 @@ public:
         return {0,96,255};
     }
 
+    static SDL_Color STATS_COLOR(){
+        return {255,186,88};
+    }
+
     static SDL_Color TEXTFIELD_COLOR(){
         return {110,110,110};
     }

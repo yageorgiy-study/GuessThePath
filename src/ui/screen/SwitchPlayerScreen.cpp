@@ -11,7 +11,7 @@ SwitchPlayerScreen::SwitchPlayerScreen(Game *game) : Screen(game) {
 
     auto textField = new TextField(game);
     textField->setActive(true);
-    textField->setValue(game->username);
+    textField->setValue(game->records->username);
     this->add(textField);
 
     this->add(new ApplyUsernameButton(game, textField));

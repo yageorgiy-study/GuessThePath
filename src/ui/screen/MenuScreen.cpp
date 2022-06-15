@@ -57,7 +57,7 @@ void MenuScreen::renderBackground(int start_x, int start_y) {
     usernameText->x = 10;
     usernameText->y = game->window_height - 10 - usernameText->h;
 
-    std::string username = "Имя игрока: " + game->username;
+    std::string username = "Имя игрока: " + game->records->username;
     ((TitleText *)usernameText)->setText(username);
 
     for(int i = 2; i < this->elements.size(); i++){
@@ -65,7 +65,7 @@ void MenuScreen::renderBackground(int start_x, int start_y) {
         btn->w = 300;
         btn->h = game->window_height / 12;
         btn->x = game->window_width / 2 - btn->w / 2;
-        btn->y = 250 + (i-1) * (btn->h + 10);
+        btn->y = 150 + (i-1) * (btn->h + 10);
     }
 
 }

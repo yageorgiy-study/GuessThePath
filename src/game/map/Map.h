@@ -13,13 +13,14 @@ class Map : public Renderable {
     int player_x = 0, player_y = 0;
 
     bool tapped = false;
-    bool dead = false;
-
     Cell* ** cells = nullptr;
 
     Game * game;
+
 public:
+    bool dead = false;
     bool showAll = false;
+    bool win = false;
     Map(Game * game, int player_x, int player_y);
     virtual ~Map();
     void generateMap();

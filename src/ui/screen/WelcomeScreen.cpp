@@ -22,15 +22,14 @@ void WelcomeScreen::renderBackground(int start_x, int start_y) {
 
     texture->render();
 
-    if(SDL_GetTicks() > this->waitMs){
-        this->game->switchScreen(new SwitchPlayerScreen(this->game));
-    }
+    if(SDL_GetTicks() > this->waitMs)
+        gotoNext();
 }
 
 WelcomeScreen::WelcomeScreen(Game *game) : Screen(game) {}
 
 void WelcomeScreen::leftMouseClicked(SDL_MouseButtonEvent &b) {
-    this->game->switchScreen(new SwitchPlayerScreen(this->game));
+    gotoNext();
 }
 
 void WelcomeScreen::keyUp(SDL_KeyboardEvent &e) {
@@ -39,4 +38,11 @@ void WelcomeScreen::keyUp(SDL_KeyboardEvent &e) {
 
 void WelcomeScreen::keyDown(SDL_KeyboardEvent &e) {
 
+}
+
+void WelcomeScreen::gotoNext() {
+    if(this->game->records->username.empty())
+        this->game->switchScreen(new SwitchPlayerScreen(this->game));
+    else
+        this->game->switchScreen(new MenuScreen(this->game));
 }

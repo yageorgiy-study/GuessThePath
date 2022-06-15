@@ -1,1 +1,4 @@
 cmake-build-debug/*
+
+# game test dat file
+records.gtp_game.dat

@@ -8,6 +8,8 @@ class WelcomeScreen : public Screen {
 protected:
     int waitMs = 3000;
 
+    void gotoNext();
+
 public:
     WelcomeScreen(Game *game);
     void renderBackground(int start_x, int start_y) override;

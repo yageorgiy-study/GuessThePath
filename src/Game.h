@@ -6,6 +6,7 @@
 #include <SDL_events.h>
 #include "ui/screen/Screen.h"
 #include "assets/AssetsManager.h"
+#include "records/Records.h"
 
 class Game {
 
@@ -19,34 +20,21 @@ protected:
 
     void render();
     void loadTextures();
-    void unloadTextures();
+    void unload();
 
     void pollEvents();
     void mouseClicked(SDL_MouseButtonEvent& b);
 
-    //keys
-//    bool keys[322];  // 322 is the number of SDLK_DOWN events
-
     void keyUp(SDL_KeyboardEvent& e);
     void keyDown(SDL_KeyboardEvent& e);
 
-//    double step = 1.0f/64;
-//    int from = -7;
-//    int to = 0;
-
-//    SDL_Surface *fire;
-//    SDL_Surface *rocket;
-
-//    SDL_Texture * fire_texture;
-//    SDL_Texture * rocket_texture;
-
 public:
-    std::string username = "Player";
-
     SDL_Renderer* renderer = nullptr;
     SDL_Window* window = nullptr;
     AssetsManager * assetManager = nullptr;
+    Records * records = nullptr;
     Screen* currentScreen = nullptr;
+
     int window_width, window_height, window_x, window_y = 0;
 
     int mouse_x, mouse_y = 0;

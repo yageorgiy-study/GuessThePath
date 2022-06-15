@@ -6,6 +6,7 @@
 #include "cell/EmptyPath.h"
 #include "cell/Finish.h"
 #include "../../Utils.h"
+#include "../../ui/screen/GameScreen.h"
 
 Map::Map(Game * game, int player_x, int player_y) : Renderable(game) {
     this->player_x = player_x;
@@ -102,7 +103,7 @@ void Map::keyDown(SDL_KeyboardEvent &e) {
 //    if(this->tapped) return;
 //    this->tapped = true;
 
-    if(dead) return;
+    if(dead || win) return;
 
     switch(e.keysym.scancode)
     {
@@ -135,6 +136,17 @@ void Map::keyDown(SDL_KeyboardEvent &e) {
     if(dynamic_cast<Bomb*>(cur) != nullptr)
     {
         dead = true;
+        return;
+    }
+
+    // Is Finish class
+    if(dynamic_cast<Finish*>(cur) != nullptr)
+    {
+        // todo: rebase?
+        if(((GameScreen *)(game->currentScreen)) != nullptr)
+            ((GameScreen *)(game->currentScreen))->win();
+
+        win = true;
         return;
     }
 }

@@ -15,7 +15,7 @@ GameScreen::GameScreen(Game *game) : Screen(game) {
 //    this->add(this->map);
 
     // Информационное сообщение
-    this->add(new InfoText(game, "Lorem ipsum"));
+    this->add(new InfoText(game, "Перемещение по полю: W - вверх, A - влево, S - вниз, D - вправо. Флаг - финиш, человек - игрок (вы)."));
 
     // Время
     this->add(new InfoText(game, ""));
@@ -39,7 +39,7 @@ void GameScreen::renderBackground(int start_x, int start_y) {
     this->map->h = size - mapOffset;
     this->map->x = window_width / 2  - this->map->w / 2;
     this->map->y = window_height / 2 - this->map->h / 2;
-    this->map->showAll = timeElapsed < 0;
+    this->map->showAll = timeElapsed < 0 || this->map->win;
     this->map->callRender(start_x, start_y);
 
     auto statusText = (InfoText *)this->elements[0];
@@ -47,39 +47,32 @@ void GameScreen::renderBackground(int start_x, int start_y) {
     statusText->y = 15;
 
 
-
+    // Time text
     auto timeText = (InfoText *)this->elements[1];
     timeText->x = 15;
     timeText->y = window_height - timeText->h - 15;
-    if(timeElapsed <= 0) {
+    if (map->win) {
+        timeText->setText("Вы выйграли эту игру!");
+    } else if(timeElapsed <= 0) {
         timeText->x = timeText->x + Utils::generateRandomInt(-beReadyShakeRadius, beReadyShakeRadius);
         timeText->y = timeText->y + Utils::generateRandomInt(-beReadyShakeRadius, beReadyShakeRadius);
         timeText->setText(
         "Запомните положение мин за " + std::to_string(-timeElapsed / 1000) + " сек!"
         );
     }
-    else {
+    else if(!map->dead) {
         timeText->setText("Дойдите до финиша. Прошло: " + std::to_string(timeElapsed / 1000) + " сек");
     }
+    else if(map->dead) {
+        timeText->setText("Вы подорвались на мине. Игра окончена.");
+    }
+
+
     auto backButton = this->elements[2];
     backButton->x = 10;
     backButton->y = 10;
     backButton->w = 300 / 3;
     backButton->h = 100 / 3;
-    /*
-    SDL_Rect squareRect;
-    squareRect.w = this->map->w;
-    squareRect.h = this->map->h;
-    squareRect.x = this->map->x;
-    squareRect.y = this->map->y;
-
-    auto buttonColor = Defaults::BUTTON_COLOR();
-
-    SDL_SetRenderDrawColor(this->game->renderer, buttonColor.r, buttonColor.g, buttonColor.b, buttonColor.a);
-    SDL_RenderFillRect(this->game->renderer, &squareRect);
-    */
-//    this->map->x = 0;
-//    this->map->y = 0;
 }
 
 void GameScreen::leftMouseClicked(SDL_MouseButtonEvent &b) {
@@ -101,4 +94,8 @@ int GameScreen::getTimeElapsed() {
 
 GameScreen::~GameScreen() {
     delete this->map;
+}
+
+void GameScreen::win() {
+    game->records->addValue(new Record(game->records->username, this->getTimeElapsed()));
 }

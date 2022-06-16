@@ -66,7 +66,7 @@ void Game::init(int argc, char **argv) {
             this->startup();
 
             // Фиксированное количество кадров в секунду
-            int a, b, delta;
+            unsigned a, b, delta; // unsigned обязательно! иначе delta считается не правильно (SDL_GetTicks - unsigned)
 
             // Цикл рендера
             while(!this->forceQuit) {
@@ -76,8 +76,7 @@ void Game::init(int argc, char **argv) {
                 // фиксация FPS
                 a = SDL_GetTicks();
                 delta = a - b;
-
-                if (delta <= 1000 / 60.0) continue;
+                if (delta <= 1000.0 / 60.0) continue;
                 b = a;
 
                 // Размер и позиция окна

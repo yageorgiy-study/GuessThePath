@@ -17,6 +17,7 @@ public:
     const std::vector<Record *> &getValues() const;
 
     bool addValue(Record *rec);
+    void clear();
 
     std::string username = "";
 protected:

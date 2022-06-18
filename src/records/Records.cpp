@@ -72,3 +72,7 @@ void Records::sort() {
     std::sort(this->values.begin(), this->values.end(), customLess);
 }
 
+void Records::clear() {
+    this->values.clear();
+}
+

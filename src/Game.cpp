@@ -1,21 +1,10 @@
 #include <iostream>
 #include <algorithm>
 #include <SDL.h>
-#include <cmath>
 #include <SDL_ttf.h>
 
 #include "Game.h"
 #include "ui/screen/WelcomeScreen.h"
-#include "ui/screen/MenuScreen.h"
-
-#include <chrono>
-#include <thread>
-#include <future>
-
-
-#define PI 3.14159265
-#define SCREEN_WIDTH    640
-#define SCREEN_HEIGHT   480
 
 void Game::init(int argc, char **argv) {
     // Неиспользуемые переменные (для устранения лишних уведомлений "warning")
@@ -41,23 +30,16 @@ void Game::init(int argc, char **argv) {
 #endif
 
     // Создание окна
-    this->window = SDL_CreateWindow(
-            this->title.c_str(),
-            SDL_WINDOWPOS_UNDEFINED,
-            SDL_WINDOWPOS_UNDEFINED,
-            SCREEN_WIDTH,
-            SCREEN_HEIGHT,
-            SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE
-    );
+    this->gameWindow = new GameWindow(this->title);
 
-    if(!this->window) {
+    if(!gameWindow->sdlWindow) {
         std::cout << "Window could not be created!" << std::endl
                   << "SDL_Error: " << SDL_GetError() << std::endl;
     } else {
-        SDL_SetWindowMinimumSize(this->window, SCREEN_WIDTH, SCREEN_HEIGHT);
+//        SDL_SetWindowMinimumSize(this->window, SCREEN_WIDTH, SCREEN_HEIGHT);
 
         // Создание холста (прорисовщика)
-        this->renderer = SDL_CreateRenderer(this->window, -1, SDL_RENDERER_ACCELERATED);
+        this->renderer = gameWindow->createRenderer();
         if(!this->renderer) {
             std::cout << "Renderer could not be created!" << std::endl
                       << "SDL_Error: " << SDL_GetError() << std::endl;
@@ -80,8 +62,9 @@ void Game::init(int argc, char **argv) {
                 b = a;
 
                 // Размер и позиция окна
-                SDL_GetWindowSize(this->window, &this->window_width, &this->window_height);
-                SDL_GetWindowPosition(this->window, &this->window_x, &this->window_y);
+//                SDL_GetWindowSize(gameWindow->sdlWindow, &this->window_width, &this->window_height);
+//                SDL_GetWindowPosition(gameWindow->sdlWindow, &this->window_x, &this->window_y);
+                this->gameWindow->requireDimensions(&this->window_x, &this->window_y, &this->window_width, &this->window_height);
 
                 this->render();
 
@@ -98,7 +81,7 @@ void Game::init(int argc, char **argv) {
         }
 
         // Удалить окно
-        SDL_DestroyWindow(this->window);
+        this->gameWindow->~GameWindow();
     }
 
     // Завершить работу программы

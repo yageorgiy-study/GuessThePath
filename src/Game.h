@@ -7,6 +7,7 @@
 #include "ui/screen/Screen.h"
 #include "assets/AssetsManager.h"
 #include "records/Records.h"
+#include "window/GameWindow.h"
 
 class Game {
 
@@ -30,7 +31,8 @@ protected:
 
 public:
     SDL_Renderer* renderer = nullptr;
-    SDL_Window* window = nullptr;
+//    SDL_Window* window = nullptr;
+    GameWindow* gameWindow = nullptr;
     AssetsManager * assetManager = nullptr;
     Records * records = nullptr;
     Screen* currentScreen = nullptr;

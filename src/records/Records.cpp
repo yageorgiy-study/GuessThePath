@@ -76,3 +76,17 @@ void Records::clear() {
     this->values.clear();
 }
 
+void Records::printToFile(){
+    std::ofstream file;
+    file.open("temp_print.txt");
+    if(file.is_open()){
+        file << "Имя пользователя: " << username << std::endl << std::endl;
+
+        int i = 1;
+        for(auto record : values){
+            file << "#" << i << ": " << record->player  << ", время: " << (record->score / 1000.) << " сек" << std::endl;
+            i++;
+        }
+    }
+    file.close();
+}

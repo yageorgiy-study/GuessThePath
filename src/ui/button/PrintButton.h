@@ -6,8 +6,13 @@
 #define GUESSTHEPATH_PRINTBUTTON_H
 
 
-class PrintButton {
+#include "../Button.h"
 
+class PrintButton : public Button {
+public:
+    PrintButton(Game *game);
+
+    void pressed() override;
 };
 
 

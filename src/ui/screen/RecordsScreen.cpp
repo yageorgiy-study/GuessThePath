@@ -10,10 +10,12 @@
 #include "../text/TitleText.h"
 #include "../text/InfoText.h"
 #include "../button/ClearResultsButton.h"
+#include "../button/PrintButton.h"
 
 RecordsScreen::RecordsScreen(Game *game) : Screen(game) {
     this->add(new BackButton(game, new MenuScreen(game)));
     this->add(new ClearResultsButton(game));
+    this->add(new PrintButton(game));
 
     this->add(new TitleText(game, "..."));
 
@@ -37,7 +39,7 @@ void RecordsScreen::renderBackground(int start_x, int start_y) {
     auto window_height = game->window_height;
 
     // Title text
-    auto titleText = this->elements[2];
+    auto titleText = this->elements[3];
     titleText->x = window_width / 2 - titleText->w / 2;
     titleText->y = 40;
 
@@ -62,7 +64,7 @@ void RecordsScreen::renderBackground(int start_x, int start_y) {
 
         const int instancesOffset = 10;
         for (int i = 0; i < size; i++) {
-            auto cur = this->elements[i + 3];
+            auto cur = this->elements[i + 4];
             cur->x = instancesOffset + window_width / 2 - boxBgRect.w / 2;
             cur->y = instancesOffset + window_height / 2 - boxBgRect.h / 2 + i * 20;
         }
@@ -84,6 +86,13 @@ void RecordsScreen::renderBackground(int start_x, int start_y) {
     clearResults->y = 10;
     clearResults->w = 150;
     clearResults->h = 100 / 3;
+
+    // Print to file button
+    auto printToFile = this->elements[2];
+    printToFile->x = 280;
+    printToFile->y = 10;
+    printToFile->w = 260;
+    printToFile->h = 100 / 3;
 }
 
 void RecordsScreen::leftMouseClicked(SDL_MouseButtonEvent &b) {

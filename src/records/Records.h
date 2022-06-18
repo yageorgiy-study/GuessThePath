@@ -20,11 +20,14 @@ public:
     void clear();
 
     std::string username = "";
+    void printToFile();
 protected:
     int maxValues = 10;
     std::string filename = "";
     std::vector<Record*> values;
     void sort();
+
+
 };
 
 

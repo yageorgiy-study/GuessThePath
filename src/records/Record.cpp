@@ -6,7 +6,8 @@
 
 Record::Record(const std::string &player, int score) : player(player), score(score) {}
 
-std::ostream &operator<<(std::ostream &os, const Record &record) {
-    os << "player: " << record.player << " score: " << record.score;
-    return os;
-}
+//std::ostream &operator<<(std::ostream &os, const Record &record) {
+//    os << "player: " << record.player << " score: " << record.score;
+//    return os;
+//}
+//

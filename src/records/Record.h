@@ -15,8 +15,8 @@ public:
     std::string player = "Player";
     int score = 0;
 
-public:
-    friend std::ostream &operator<<(std::ostream &os, const Record &record);
+//public:
+//    friend std::ostream &operator<<(std::ostream &os, const Record &record);
 };
 
 

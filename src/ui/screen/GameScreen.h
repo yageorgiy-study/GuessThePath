@@ -12,7 +12,7 @@ public:
     virtual ~GameScreen();
 
     Map * map;
-    int timeStarted = -1;
+    Uint32 timeStarted = -1;
 
     int beReadyShakeRadius = 2;
 
@@ -20,7 +20,7 @@ public:
     bool dead = false;
     bool paused = false;
 
-    int pauseStarted = -1;
+    Uint32 pauseStarted = -1;
 
     void renderBackground(int start_x, int start_y) override;
     void leftMouseClicked(SDL_MouseButtonEvent &b) override;

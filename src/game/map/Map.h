@@ -12,7 +12,7 @@ class Map : public Renderable {
 
     int player_x = 0, player_y = 0;
 
-    bool tapped = false;
+//    bool tapped = false;
     Cell* ** cells = nullptr;
 
     Game * game;

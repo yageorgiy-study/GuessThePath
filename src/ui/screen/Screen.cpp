@@ -22,6 +22,7 @@ Screen::~Screen() {
     for(auto element : this->elements){
         delete element;
     }
+    this->elements.clear();
 }
 
 void Screen::callLeftMouseClicked(SDL_MouseButtonEvent &b) {

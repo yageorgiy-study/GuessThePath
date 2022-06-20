@@ -19,7 +19,7 @@ public:
 //    static const short UNDEFINED = -1;
     int w = 16, h = 16;
 
-    bool isVisited() const;
+//    bool isVisited() const;
 
     void setVisited(bool visited);
 

@@ -4,7 +4,8 @@
 Renderable::Renderable(Game *game) : game(game) {}
 
 void Renderable::callLeftMouseClicked(SDL_MouseButtonEvent &b) {
-    leftMouseClicked(b);
+    if(visible)
+        leftMouseClicked(b);
 }
 
 void Renderable::callRender(int start_x, int start_y) {

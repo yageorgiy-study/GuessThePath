@@ -4,4 +4,6 @@ cmake-build-release/*
 # game test dat file
 records.gtp_game.dat
 
-./*.zip
+*.zip
+
+.idea/dictionaries/*
